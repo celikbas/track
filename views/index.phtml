@@ -1,0 +1,65 @@
+<h1 align=center><?=$title?></h1>
+<p align=center>Blok: 
+
+<?php
+$db = new ezSQL_mysqli(USER, PASS, DB, HOST);
+$sql = "SELECT DISTINCT SUBSTRING_INDEX(SUBSTRING_INDEX(ip,'.',-2),'.',1) AS 'Block' FROM `netmon` WHERE 1 ";
+
+// Extract results into the array $users (and evaluate if there are any results at the same time)..
+if ($ips = $db->get_results($sql)){
+    // Loop through the resulting array on the index $users[n]
+    foreach ($ips as $ip){
+    // Access data using column names as associative array keys
+        echo "<a href='" . $baseUri . "/ip/" . $ip->Block . "'>" . $ip->Block . "</a> | ";
+    }
+} else {
+    // If no users were found then **if** evaluates to false..
+    echo "No ip block found.";
+}
+?>
+&nbsp;&nbsp;&nbsp;&nbsp; Sınırla: 
+<a href='<?=$baseUri.'/ip/'.$ip1?>/up'>up</a> | 
+<a href='<?=$baseUri.'/ip/'.$ip1?>/down'>down</a> </p>
+
+<?php
+$params   = array();
+$params[] = "ip";
+if (!isset($result)){
+    echo "Lütfen bir IP bloğu seçiniz";
+} else {
+    drawTable($result, $params);
+}
+
+/**
+ * Main body of application
+ * 
+ * @param array $data   array
+ * @param array $params array
+ * 
+ * @return string table of ip list
+*/
+function drawTable ($data, $params) 
+{
+    echo '<table border=1 cellspacing=2 cellpadding=2 bgcolor=6611ff width=400 align=center>';
+    echo '<tr>';
+    foreach ($data[0] as $column => $value) {
+        echo '<th>' . $column . '</th>';
+    }
+    echo '</tr>';
+
+    foreach ($data as $row) {
+        echo '<tr bgcolor="6688ff">';
+        foreach ($row as $column => $value) {
+            if ($column == $params[0]) {
+                $path = substr( $value, strrpos($value, '.')-2);
+                $path = str_replace(".", "/", $path);
+                echo "<td align=left><a href=\"$path\">$value</a></td>";
+            } else {
+                echo '<td align="left" nowrap>' . $value. '</td>';
+            }
+        }
+        echo '</tr>';
+    }
+    echo '</table>';
+    echo '<p align="center"><a href="javascript: history.go(-1)">Geri</a></p>';
+}
