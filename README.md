@@ -3,8 +3,10 @@ Monitor/track IP Address. This project is a website displays active inactive IP 
 
 ## ToDo
 
-```gfm
+```
 - [x] github load.
+- [ ] Usage persentage of an IP.
+- [ ] adding database prefix.
 - [ ] Multilanguage support.
 ```
 
@@ -27,7 +29,7 @@ Monitor/track IP Address. This project is a website displays active inactive IP 
 4. Site will be live at:
    http://x.x.x.x/track/ip/
 
-    
+
 
 
 
