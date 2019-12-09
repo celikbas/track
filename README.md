@@ -7,6 +7,8 @@ Monitor/track IP Address. This project is a website displays active inactive IP 
 - [x] github load.
 - [ ] Usage persentage of an IP.
 - [ ] adding database prefix.
+- [ ] cron job description
+- [ ] add some screenshouts..
 - [ ] Multilanguage support.
 ```
 
