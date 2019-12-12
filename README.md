@@ -30,7 +30,7 @@ Monitor/track IP Address. This project is a website displays active inactive IP 
 - [ ] Usage persentage of an IP.
 - [ ] adding database prefix.
 - [ ] cron job description
-- [ ] add some screenshouts..
+- [x] add some screenshouts..
 - [ ] Multilanguage support.
 
 
