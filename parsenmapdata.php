@@ -5,8 +5,6 @@ include 'config.php';
 $auth = Auth::Login($valid_user, $valid_pass);
 if ($auth) {
     echo "<h1>".TITLE." - Parsing NMAP Data</h1>";
-} else {
-    $auth->Logout();
 }
 
 require 'vendor/autoload.php';
